@@ -62,7 +62,8 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
 
   currentUrl[key] = value
 
-  return qs.stringifyUrl({
+  return qs.stringifyUrl(
+    {
       url: window.location.pathname,
       query: currentUrl,
     },
@@ -77,7 +78,8 @@ export function removeKeysFromQuery({ params, keysToRemove }: RemoveUrlQueryPara
     delete currentUrl[key]
   })
 
-  return qs.stringifyUrl({
+  return qs.stringifyUrl(
+    {
       url: window.location.pathname,
       query: currentUrl,
     },
@@ -86,6 +88,6 @@ export function removeKeysFromQuery({ params, keysToRemove }: RemoveUrlQueryPara
 }
 
 export const handleError = (error: unknown) => {
-  console.log(error)
+  console.error(error)
   throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
 }
